@@ -13,7 +13,7 @@ function AlertAndLog{
         $input | Out-File "$($pathLectura)salida.log" -Append
     }
     else{
-        $input | Out-File "$($pathLog)salida.log" -Append
+        $input | Out-File "$($pathLog)salidaEj6.log" -Append
     }  
 }
 
@@ -24,12 +24,13 @@ if($procesos.Length -eq 0)
     Write-Output "El archivo está vacio" 
 }
 else{
+
     #Por cada proceso me suscribo al evento
-    foreach($proceso in $procesos)
-    {
-    Register -ObjectEvent -Event Started -InputObject $proceso -Action{
-        Get-Process $proceso | AlertAndLog
-        }
-    }
+    foreach($proceso in $procesos){
+    $query="Select * From __InstanceCreationEvent within 3 Where TargetInstance ISA 'Win32_Process' And TargetInstance.Name = notepad.exe"
+    Register-WMIEvent -query $query -sourceIdentifier "NewProcess-$($proceso)" -action {Write-Host "Esto anda"} 
+   }
 }
+
+#Unregister-Event "NewProcess-notepad.exe"
 #FIN
