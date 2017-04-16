@@ -14,7 +14,8 @@ b) Le agregaría la validación que exige al usuario ingresar obligatoriamente u
 #>
 
 Param(
-[Parameter(Mandatory = $true)]$pathsalida #Que sea obligatorio
+[Parameter(Mandatory = $true)] #Que sea obligatorio
+[string]$pathsalida #Que sea del tipo string
 )
 $existe = Test-Path $pathsalida
 if ($existe -eq $true)
