@@ -23,11 +23,15 @@ Micaela Rocío De Rito 39547209
 #>
 
 
-Param([Parameter(Mandatory=$true)]
+Param(
+      [Parameter(Mandatory=$true)]
       [string] $pathLectura, 
+      
       [Parameter(Mandatory=$true)]
       [string]$pathSalida, 
-      $pathLog)
+      
+      [string]$pathLog
+     )
 #Leo las Urls
 $lineas=Get-Content $pathLectura;
 #Instancio el WebClient
