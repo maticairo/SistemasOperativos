@@ -1,5 +1,27 @@
-﻿#LEER BIEN EL ENUNCIADO PARA VER QUE FALTA!
-#Hay que validar parametros y poner la ayuda para Get-Help - ver enunciado
+<# Trabajo Práctico 1
+Ejercicio 2
+Matias Ezequiel Cairo 39670522
+Thomas Ignacio Reynoso 39332450
+Pablo Avalo 39214569
+Luciano Gabriel Tonlorenzi Sebastía 39244171
+Micaela Rocío De Rito 39547209 
+
+.SYNOPSIS
+    
+    Lee URL's de un archivo y realiza las descargas.
+    
+.DESCRIPTION
+   
+    Este script nos permite realizar descargas a través del archivo con el listado de URL's que le pasaremos por parámetro.
+    Al realizarlas se generará un archivo de log donde se indicará la hora de inicio, el tiempo insumido, y el tamaño de cada archivo.
+    Por parámetros le debemos pasar el Path del archivo de descargas, el Path del directorio donde se guardarán las descargas, y opcionalmente,
+    el Path donde se guardará el archivo de log (De otra manera se generará en el directorio del archivo de descargas).
+    
+.NOTES
+
+    Cada una de las URL's del archivo de lectura deberán finalizar con "/".
+#>
+
 
 Param([Parameter(Mandatory=$true)]
       [string] $pathLectura, 
