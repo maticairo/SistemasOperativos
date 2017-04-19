@@ -1,4 +1,24 @@
-﻿Param($ciudadOrigen,$ciudadDestino,$cambio)
+﻿<#
+Trabajo Práctico 1
+Ejercicio 5
+Matias Ezequiel Cairo 39670522
+Thomas Ignacio Reynoso 39332450
+Pablo Avalo 39214569
+Luciano Gabriel Tonlorenzi Sebastía 39244171
+Micaela Rocío De Rito 39547209 
+
+.SYNOPSIS
+    
+    Muestra un listado de pasajes disponibles
+    
+.DESCRIPTION
+   
+    Este script nos permite realizar una búsqueda de pasajes (a partir de un archivo csv) según el lugar de origen y destino que le ingresaremos por parámetros.
+    Según lo que el usuario elija, se actualizará el archivo csv.
+
+#>
+ 
+Param($ciudadOrigen,$ciudadDestino,$cambio)
 $directorio = "C:\SO\reservas.csv"
 
 
