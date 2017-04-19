@@ -1,4 +1,4 @@
-﻿<#
+<#
 
 .SYNOPSIS
     
@@ -15,17 +15,26 @@ modificados, eliminados o renombrados.
     ROJO cuando es ELIMINADO,
     GRIS cuando es RENOMBRADO.
 
+.NOTES
+    Solo se permite ingresar un directorio y un tipo de extension. Habra que parar y ejecutar de nuevo el
+    programa si se quiere ver otro tipo de extension. Tambien debe desuscribirse de los eventos lanzados con el comando
+    Unregister-Event
+
 .EXAMPLE
     ./TP1EJ4.ps1
-
 
 #>
 
 
-Param([Parameter(Mandatory=$true)]
-      [string] $pathLectura, #c:\users\thomas\desktop\test
-      [Parameter(Mandatory=$true)]
-      [string] $fileType ) # siempre ingresar la extension entre "* *" por ej: *.*, *.txt*, *.ps1*, *.xslx*, *.doc*
+Param(
+       [Parameter(Mandatory=$true)]
+       [ValidateNotNullOrEmpty()]
+       [string] $pathLectura, #c:\users\thomas\desktop\test
+       
+       [Parameter(Mandatory=$true)]
+       [ValidateNotNullOrEmpty()]
+       [string] $fileType # siempre ingresar la extension entre "* *" por ej: *.*, *.txt*, *.ps1*, *.xslx*, *.doc*
+      )                          
 
 Function Register-Watcher {
     param ($folder)
@@ -104,3 +113,4 @@ Function Register-Watcher {
 #SE EJECUTA LA FUNCION, LE MANDO EL PATH A MONITOREAR
  Register-Watcher "$pathLectura"
  
+
