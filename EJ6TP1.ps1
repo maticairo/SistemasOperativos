@@ -1,5 +1,22 @@
-﻿#LEER BIEN EL ENUNCIADO PARA VER QUE FALTA!
-#Hay que validar parametros y poner la ayuda para Get-Help - ver enunciado
+<#
+Trabajo Práctico 1
+Ejercicio 6
+Matias Ezequiel Cairo 39670522
+Thomas Ignacio Reynoso 39332450
+Pablo Avalo 39214569
+Luciano Gabriel Tonlorenzi Sebastía 39244171
+Micaela Rocío De Rito 39547209 
+
+.SYNOPSIS
+    
+    Identifica el inicio de procesos no deseados
+    
+.DESCRIPTION
+   
+    Este script nos permite monitorear una serie de procesos que se encontrarán en un archivo que le pasaremos por parámetro. 
+    Generará un archivo de log con los procesos que hayan sido iniciados, y mostrará un mensaje de alerta.
+    Si el archivo está vacío, mostrará un mensaje
+#>
 
 Param([Parameter(Mandatory=$true)]
       [string] $pathLectura,  
