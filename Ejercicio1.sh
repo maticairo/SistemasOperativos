@@ -50,8 +50,7 @@ done
 
 #d.  IFS es el separador de palabras, en este caso lo cambio a '\n' para que realice el salto de línea y coloque una palabra debajo de la otra.
 
-
-#e.  
+#e.  No encuentro ningun error en cuanto a sintaxis, por lo que yo interprete que hace el script, no considero que haya ningun error.
 
 #f.  El objetivo del script es filtrar un archivo que le paso por parámetro, y mostrar en forma de lista, uno abajo del otro las diez primeras filas con los pesos de los archivos ordenados.
 
