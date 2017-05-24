@@ -18,8 +18,8 @@ Micaela Rocío De Rito 39547209
 
 #>
  
-Param($ciudadOrigen,$ciudadDestino,$cambio)
-$directorio = "C:\SO\reservas.csv"
+Param($ciudadOrigen,$ciudadDestino,$cambio,$directorio)
+
 
 
 $bdd = Import-Csv -Path  $directorio

@@ -27,24 +27,27 @@ Param(
        
        [string]$pathLog
      )
-
-
-$dict = @{};
+$existeIn = Test-Path -Path $pathLectura
+$dict = @{}; 
+if (  $existeIn -eq $false){
+    write "No se ha encontrado el directorio" 
+    return  
+}
 gci $pathLectura -Recurse  |where {$_.mode -notlike "d*"}| foreach {
   $key = $_.Name 
-  $find = $dict[$key]
+  $find = $dict[$key] 
   if($find -ne $null) {
     #el actual es duplicado 
        # write $_.Name  $_.CreationTime  $_.LastWriteTime $_.DirectoryName
        $salida = $_ | Format-Table -Property Name,CreationTime,LastWriteTime,DirectoryName 
-       if($pathLog -eq $null)
-        {
-            $salida | Out-File -FilePath "$($pathLectura)salida.log" -Append
+       $sal = $pathLectura
+       if ( $pathLog -ne $null)
+        {   
+            $existeLog = Test-Path  -path $pathLog
+            if ( $existeLog  -eq $true){ $sal = $pathLog}
+            
         }
-        else
-        {
-            $salida | Out-File -FilePath "$($pathLog)salida.log" -Append
-        }
+         $salida | Out-File -FilePath "$($sal)salida.log" -Append
   }
   $dict[$key] ++;
 }
