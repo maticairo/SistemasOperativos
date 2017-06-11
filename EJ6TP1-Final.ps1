@@ -26,6 +26,14 @@ Directorio de dónde guarda el archivo log.
 .EXAMPLE
     .\Ejercicio_6.ps1 -pathLista "C:\Users\documents\blacklist.txt" -pathLog "C:\Users\resultado\"
 
+.NOTES
+
+    La lista negra debe contener el nombre de los procesos de la siguiente manera:
+    notepad - para el block de notas
+    Calculator - para la calculadora
+
+    El path de log NO debe incluír una "\" al final.
+
 #>
 
 Param([parameter(Mandatory=$true, Position=1)] $pathLista, 
@@ -39,7 +47,7 @@ if(-not($pathLista) -or (Test-Path $pathLista -PathType Leaf) -eq $false )
 }
 
 #Si no se definió path del log uso el mismo que la lista negra
-if(-not($pathLog))
+if(!$pathLog)
 {
     $pathLog = $pathLista.Substring(0,$pathLista.LastIndexOf('\'))
 }
