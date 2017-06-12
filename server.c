@@ -2,25 +2,21 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include <time.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/un.h>
-#include <pthread.h>
 #include <fcntl.h>
 
-#define PORT 5000
 #define TRUE 12
-#define DIR "/home/pjavalo/prueba/ppi.c"
 
 
 int main(){
 
 	struct sockaddr_in server_addr;
 	int sock, port,msg_sock, n;
-	size_t bytes_read;
+	size_t bytes_read = 0;
+	pid_t child;
 	char buffer[1024], path[100];
-	pthread_t tid;
 	FILE * fw;
 
 	puts("ingrese el puerto al que se desea conectar");
@@ -49,7 +45,12 @@ int main(){
 	puts("esperando por clientes");
 	while(TRUE)
 	{ 	
-		msg_sock = accept(sock, 0, 0); 
+		msg_sock = accept(sock, 0, 0);
+		child = fork();
+		
+		if (!child){
+		close(sock);
+		puts("se ha conectado un cliente"); 
 		if (msg_sock == -1)
 		{ 
 			perror("accept");
@@ -61,23 +62,38 @@ int main(){
 		if (fw < 0){
 			perror("abriendo file");
 			send(msg_sock,"error",5,0);
+			close(msg_sock);
 			exit(4);
 		}
 		send(msg_sock,"ok",2,0);
+		puts("guardando archivo..");
 		do{			
-		n = read(msg_sock,buffer,1024);
+		n = read(msg_sock,buffer,sizeof(buffer));
 		
-		if (n < 0)
+		if (n < 0){
+			close(fw);
+			close(msg_sock);
 			perror("read");
+			exit(5);	
+		}
 		
-		
-		
-		if(write(fw,buffer,n)<0)
+		if(write(fw,buffer,n)<0){
+			close(fw);
+			close(msg_sock);	
 			perror("write");
-		}while(n > 0);		  
+			exit(6);
+		}
+		bytes_read += n;
+		}while(n > 0);
+		printf("se han guardado %d bytes\n",bytes_read);
+		close(msg_sock);
+		close(fw);
+		exit(0);
+		}		  
 		close(msg_sock);
 		close(fw);
 	} 
-		close(sock);
+	close(sock);
+	return(0);
 }
 
