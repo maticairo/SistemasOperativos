@@ -2,10 +2,10 @@
 ##
 ## Trabajo Practico Nro 3:
 ##
-##   Ejercicio 03
+##   Ejercicio 01
 ##
 ##
-##  Trabajo Práctico N°3 - Ejercicio 3 - 1° Entrega
+##  Trabajo Práctico N°3 - Ejercicio 1 - 1° Entrega
 ##  Integrantes:
 ##  Matias Ezequiel Cairo 39670522
 ##	Thomas Ignacio Reynoso 39332450
