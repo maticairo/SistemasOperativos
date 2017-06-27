@@ -49,6 +49,7 @@ if [ "$1" = "-h" -o "$1" = "-help" -o "$1" = "-?" ] ; then ayuda ; exit ; fi
 
 if [[ $# -lt 4 ]] || [[ $# -gt 5 ]]; then
 	echo "Cantidad ingresada de parametros errónea. Por favor ingrese entre 4 y 5. Ejecute el comando -h para mas ayuda!"
+	exit 0
 fi
 
 ### pregunto si algunos de los argumentos estan vacios y muestro el mensaje correspondiente
