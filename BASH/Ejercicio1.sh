@@ -5,7 +5,7 @@
 #Pablo Avalo 39214569
 #Luciano Gabriel Tonlorenzi Sebastía 39244171
 #De Rito Micaela 39547209
-#Primera Entrega
+#Segunda Entrega
 
 #!/bin/bash
 
