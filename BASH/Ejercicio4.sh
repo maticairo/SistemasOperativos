@@ -1,3 +1,12 @@
+#Ejercicio 1
+#Tp N°2
+#Matias Ezequiel Cairo 39670522
+#Thomas Ignacio Reynoso 39332450
+#Pablo Avalo 39214569
+#Luciano Gabriel Tonlorenzi Sebastía 39244171
+#De Rito Micaela 39547209
+#Segunda Entrega
+
 #!/bin/bash
 # -*- ENCODING: UTF-8 -*-
 
