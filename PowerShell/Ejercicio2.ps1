@@ -10,8 +10,8 @@ Integrantes:
 Descarga de URLs dentro de un archivo de texto hacia una carpeta especificada.
 
 .Description
-Este mÈtodo recibe por par·metros un archivo con una lista de URLs a descargar, una direcciÛn donde se almacenar·n dichas descargas y opcionalmente se puede indicar tambiÈn un archivo de log donde se obtendr· informaciÛn sobre la duraciÛn y el tamaÒo de cada descarga.
-Los primeros dos par·metros son obligatorios, mientras que el tercer par·metro es opcional. En caso de no indicarse el tercer par·metro, el archivo de log se crear· por defecto en la carpeta donde se guardar·n las descargas.
+Este m√©todo recibe por par√°metros un archivo con una lista de URLs a descargar, una direcci√≥n donde se almacenar√°n dichas descargas y opcionalmente se puede indicar tambi√©n un archivo de log donde se obtendr√° informaci√≥n sobre la duraci√≥n y el tama√±o de cada descarga.
+Los primeros dos par√°metros son obligatorios, mientras que el tercer par√°metro es opcional. En caso de no indicarse el tercer par√°metro, el archivo de log se crear√° por defecto en la carpeta donde se guardar√°n las descargas.
 
 .Example
 Ejemplo 1:
@@ -101,6 +101,6 @@ foreach($d in $dwnld)
     if (-not $d.FullName.Contains('log.txt'))
     {
         [System.Int32]$tam = $d.Length/1KB
-        Add-Content $log "`n$d (TamaÒo): $tam KB"
+        Add-Content $log "`n$d (Tama√±o): $tam KB" 
     }
 }
