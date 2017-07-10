@@ -62,19 +62,20 @@ if [ $# -eq 2 ];then
 	fi
 fi
 
-vec=( 'txt' 'exe' 'zip' 'png' )
-
+vec=( 'text/plain' 'application/x-executable' 'application/zip' 'image/png' )
+vec2=( "plano" "binario" "zip" "png" )
 if test -d "$1"
 then
-	for tipo in "${vec[@]}";
+	for ((i = 0; i < 4; i++));
 	do
-		var4=$(find "$1" $var7 -type f -name "*.$tipo" | wc -l)
-		var5=$(find "$1" $var7 -type f -name "*.$tipo" -exec du -chk {} + | grep total$ | cut -f 1)
+		LISTA=$(find "$1" $var7 -type f -exec file -i {} + | grep ${vec[i]} | cut -f1 -d ":")
+		var4=$(find "$1" $var7 -type f -exec file -i {} + | grep ${vec[i]} | wc -l)
+		var5=$(du -chk $LISTA | grep total$ | cut -f 1)
 			if [ $var4 -gt 0 ]; then
 				if [ $var6 == "arch" ];then
-					echo -e "$tipo\t$var4\t$var5 kB" >> "$1".log
+					echo -e "${vec2[i]}\t\t$var4\t$var5 kB" >> "$1".log
 				else
-					echo -e "$tipo\t$var4\t$var5 kB"
+					echo -e "${vec2[i]}\t\t$var4\t$var5 kB"
 				fi
 			fi
 	done
